@@ -9,7 +9,7 @@ The core insight it encodes: **the same prompt content is legitimate
 configuration on one surface and gets filtered as injection-shaped on
 another.** A role definition ("You are a senior code reviewer...") is correct
 in an API system prompt, in claude.ai project instructions, and in a Claude
-Code agent file - and it is quarantined in the claude.ai user preferences
+Code agent file **but** it is quarantined in the claude.ai user preferences
 field, where the platform applies content selectively. This skill knows the
 rules per surface and asks for the target surface before writing a single
 line.
@@ -54,7 +54,10 @@ prompt for Claude Code", or "why is my prompt being ignored".
 The same skill works as an uploaded skill in claude.ai and Claude Desktop -
 useful because prompt work is often done in the chat apps, not the terminal.
 
-Build the zip:
+Grab the prebuilt zip from the latest
+[GitHub Release](https://github.com/WimCos/prompt-optimizer/releases).
+
+Or build the zip yourself:
 
 ```shell
 ./tools/zip-skill.sh      # macOS / Linux
@@ -64,16 +67,15 @@ Build the zip:
 This produces `dist/prompt-optimizer-skill.zip` containing the
 `prompt-optimizer/` skill folder (SKILL.md at the folder root, with its
 `references/`). Upload it in claude.ai under Settings > Capabilities >
-Skills, or grab the prebuilt zip from the latest
-[GitHub Release](https://github.com/WimCos/prompt-optimizer/releases).
+Skills.
 
 Notes for the chat surfaces:
 
 - The skill name is unique (`prompt-optimizer`) because claude.ai skills are
-  flat - no plugin namespacing. If you also use other skill collections,
-  names must not collide.
+  flat. They do not have plugin namespacing like Claude Code. If you also use
+  other skill collections, names must not collide.
 - In chat apps without file access, the skill delivers refined prompts
-  inline instead of writing files - same process, different last step.
+  as downloadable artifcats instead of writing files.
 
 ## How it behaves
 
