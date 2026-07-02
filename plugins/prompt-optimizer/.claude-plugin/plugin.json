@@ -1,7 +1,7 @@
 {
   "name": "prompt-optimizer",
   "displayName": "Prompt Optimizer",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Refine underspecified prompts into surface-correct, ready-to-use instructions. Knows the rules per target surface: claude.ai user preferences (filtered tier), claude.ai project instructions (trusted tier), Claude Code rules and agent files (config tier), and API system prompts (full control).",
   "author": {
     "name": "Wim Cos",

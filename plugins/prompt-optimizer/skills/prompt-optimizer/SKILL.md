@@ -41,6 +41,12 @@ Before writing anything, determine:
   different surface? If yes, propose the single right home instead of
   duplicating - content identical across two projects belongs in neither
   project file.
+- Does a prior refinement artifact already exist at or near the destination
+  (an earlier dated sibling, a misnamed previous attempt)? If yes, do NOT
+  adopt its content. Refine from the original source only; the prior
+  artifact is evidence of naming convention, nothing more. If your output
+  converges with it, that convergence must fall out of independent work,
+  proven by the section accounting table (see Validate).
 
 ### 3. Produce
 
@@ -66,13 +72,17 @@ Before presenting the result, verify:
   preferences surface specifically: every universal rule carries "always" or
   "for all chats"; zero identity statements; zero procedure scripts; zero
   tool state machines.
-- Nothing project-specific was lost. Deduplication removes only TRUE
-  duplicates of the user's global preferences - a project-specific
-  application, emphasis, or stricter variant of a general rule is NOT a
-  duplicate. When unsure whether content is a duplicate, keep it.
-- Every removed section is named in the delivery summary, with the reason it
-  was safe to remove. Silent loss is a defect even when the removal is
-  correct.
+- **Section accounting (mandatory when refining an existing prompt):** list
+  EVERY top-level section of the ORIGINAL, and mark each one exactly one of:
+  kept / merged into {where} / removed because {reason}. The removal summary
+  in the delivery is generated from this table, not from memory of what you
+  did. A section of the original that appears in neither the output nor the
+  table is a defect - this is the check that catches content silently lost
+  to anchoring or false deduplication.
+- Deduplication removes only TRUE duplicates of the user's global
+  preferences - a project-specific application, emphasis, or stricter
+  variant of a general rule is NOT a duplicate. When unsure whether content
+  is a duplicate, keep it.
 - Every instruction changes behavior - remove decorative text.
 - No instruction contradicts another or silently conflicts with the user's
   global preferences.
@@ -83,8 +93,9 @@ Before presenting the result, verify:
 ### 5. Deliver
 
 When file access is available, write the refined prompt to a file and
-summarize what changed, what was removed and why, and any claims you did not
-verify.
+summarize what changed. The summary's removed/merged list comes from the
+section accounting table - include every removed or merged row with its
+reason, plus any claims you did not verify.
 
 Naming and location: follow the user's established convention for the
 artifact type when one exists - inspect the destination directory first
@@ -165,6 +176,10 @@ shape is. Keep the demand, fix the shape.
 - Classifying project-specific content as duplication because it RESEMBLES
   generic content, then silently dropping it. Teaching emphasis, domain
   rules, and stricter variants stay; removals are always named.
+- Adopting a prior refinement artifact found at the destination instead of
+  refining from the original. Prior outputs are naming evidence, not
+  content - anchoring on them re-imports their mistakes and bypasses every
+  validation step.
 - Inventing a filename or location when the destination directory already
   shows a naming convention.
 - Over-structuring with deeply nested XML when flat sections are equally

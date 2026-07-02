@@ -1,7 +1,7 @@
 {
   "name": "prompt-optimizer",
   "description": "Surface-aware prompt optimization for the Claude ecosystem",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "owner": {
     "name": "Wim Cos",
     "url": "https://github.com/WimCos"
@@ -11,7 +11,7 @@
       "name": "prompt-optimizer",
       "source": "./plugins/prompt-optimizer",
       "description": "Refine underspecified prompts into surface-correct, ready-to-use instructions for claude.ai user preferences, claude.ai project instructions, Claude Code rules and agent files, and API system prompts.",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "license": "MIT",
       "category": "productivity",
       "tags": ["prompt-engineering", "prompts", "claude", "skills", "preferences"]
