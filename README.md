@@ -14,6 +14,11 @@ field, where the platform applies content selectively. This skill knows the
 rules per surface and asks for the target surface before writing a single
 line.
 
+New to the term? **Target surface** simply means the place your prompt goes:
+the claude.ai preferences box, a project's instructions, a Claude Code file,
+or an API system prompt. Different surfaces trust your prompt differently:
+same letter, different mailbox, different rules.
+
 ## The four surfaces
 
 | Surface | Trust tier | Roles allowed | Key rule |
@@ -51,17 +56,24 @@ prompt for Claude Code", or "why is my prompt being ignored".
 
 ## Use in claude.ai and Claude Desktop (skill zip)
 
-The same skill works as an uploaded skill in claude.ai and Claude Desktop -
-useful because prompt work is often done in the chat apps, not the terminal.
+The same skill works as an uploaded skill in claude.ai and Claude Desktop. This
+is useful because prompt work is often done in the chat apps, not the terminal.
 
 Grab the prebuilt zip from the latest
 [GitHub Release](https://github.com/WimCos/prompt-optimizer/releases).
 
 Or build the zip yourself:
 
+***macOS / Linux***
+
 ```shell
-./tools/zip-skill.sh      # macOS / Linux
-./tools/zip-skill.ps1     # Windows (PowerShell 5+ or 7+)
+./tools/zip-skill.sh
+```
+
+***Windows***
+
+```powershell
+./tools/zip-skill.ps1
 ```
 
 This produces `dist/prompt-optimizer-skill.zip` containing the
@@ -75,7 +87,7 @@ Notes for the chat surfaces:
   flat. They do not have plugin namespacing like Claude Code. If you also use
   other skill collections, names must not collide.
 - In chat apps without file access, the skill delivers refined prompts
-  as downloadable artifcats instead of writing files.
+  as downloadable artifacts instead of writing files.
 
 ## How it behaves
 
@@ -119,8 +131,9 @@ The skill follows the [agentskills.io](https://agentskills.io) standard
 (SKILL.md with frontmatter, progressive disclosure via references/), so it is
 usable by other agents that support the standard.
 
-I have not tested the skill in other agents like OpenCode or Pi, nor have I
-tested the prompts it creates against other models than the Claude models.
+I have not tested the skill in other agents like OpenCode, Codex or Pi, nor
+have I tested the prompts it creates against other models than the Claude
+models.
 
 ## License
 

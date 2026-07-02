@@ -17,6 +17,10 @@ claude.ai project instructions, and it is quarantined in the claude.ai user
 preferences field. Knowing the target surface is not optional - it determines
 every rule that follows.
 
+**Target surface** - the place your prompt goes (the claude.ai preferences
+box, a project's instructions, a Claude Code file, or an API system prompt).
+Different surfaces trust your prompt differently.
+
 ## Process
 
 ### 1. Determine the target surface
@@ -79,6 +83,9 @@ Before presenting the result, verify:
   did. A section of the original that appears in neither the output nor the
   table is a defect - this is the check that catches content silently lost
   to anchoring or false deduplication.
+- The output contains at least one worked input/output example. The Produce
+  step requires it; this check catches its omission - the section table only
+  audits what was in the original, not what the skill requires you to add.
 - Deduplication removes only TRUE duplicates of the user's global
   preferences - a project-specific application, emphasis, or stricter
   variant of a general rule is NOT a duplicate. When unsure whether content
@@ -147,8 +154,8 @@ shape is. Keep the demand, fix the shape.
   question.
 - Do not state unverified rationales as fact. When a justification inside a
   refined prompt rests on a claim you have not checked (e.g. "schemas break
-  across minor versions"), either verify it or mark it as unverified in the
-  delivery summary.
+  across minor versions"), either verify it, mark it as unverified in the
+  delivery summary, or drop the claim and keep the rule.
 - Do not borrow conventions from other AI platforms and present them as
   Claude best practices. Stick to Anthropic's documented patterns: XML
   structure, role prompting, few-shot examples, chain-of-thought, prefilling.
