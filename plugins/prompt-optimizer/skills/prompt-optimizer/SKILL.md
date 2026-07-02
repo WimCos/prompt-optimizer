@@ -1,6 +1,6 @@
 ---
-name: optimize
-description: Refine, optimize, or rewrite prompts for the Claude ecosystem with surface-aware rules. Use when the user wants to improve a prompt, system prompt, project instructions, user preferences, CLAUDE.md/AGENTS.md content, or agent persona - or to convert a prompt from one surface to another (e.g. a system prompt into claude.ai preferences). Trigger phrases - /optimize, refine this prompt, optimize my system prompt, rewrite my preferences, improve my project instructions, convert this prompt for Claude Code, why is my prompt being ignored.
+name: prompt-optimizer
+description: Refine, optimize, or rewrite prompts for the Claude ecosystem with surface-aware rules. Use when the user wants to improve a prompt, system prompt, project instructions, user preferences, CLAUDE.md/AGENTS.md content, or agent persona - or to convert a prompt from one surface to another (e.g. a system prompt into claude.ai preferences). Trigger phrases - /prompt-optimizer, refine this prompt, optimize my system prompt, rewrite my preferences, improve my project instructions, convert this prompt for Claude Code, why is my prompt being ignored.
 license: MIT
 ---
 

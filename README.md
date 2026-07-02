@@ -1,14 +1,16 @@
 # Prompt Optimizer
 
-A Claude Code plugin that refines underspecified prompts into structured,
-surface-correct, ready-to-use instructions for the Claude ecosystem.
+A skill that refines underspecified prompts into structured, surface-correct,
+ready-to-use instructions for the Claude ecosystem. Distributed as a Claude
+Code plugin marketplace and as an uploadable skill zip for claude.ai and
+Claude Desktop.
 
 The core insight it encodes: **the same prompt content is legitimate
 configuration on one surface and gets filtered as injection-shaped on
 another.** A role definition ("You are a senior code reviewer...") is correct
 in an API system prompt, in claude.ai project instructions, and in a Claude
 Code agent file - and it is quarantined in the claude.ai user preferences
-field, where the platform applies content selectively. This plugin knows the
+field, where the platform applies content selectively. This skill knows the
 rules per surface and asks for the target surface before writing a single
 line.
 
@@ -22,11 +24,11 @@ line.
 | API system prompt | Full control | Yes | Anthropic prompt-engineering docs apply directly |
 
 Full decision tables:
-[surface-rules.md](plugins/prompt-optimizer/skills/optimize/references/surface-rules.md).
+[surface-rules.md](plugins/prompt-optimizer/skills/prompt-optimizer/references/surface-rules.md).
 Worked examples, including a full system-prompt-to-preferences conversion:
-[conversions.md](plugins/prompt-optimizer/skills/optimize/references/conversions.md).
+[conversions.md](plugins/prompt-optimizer/skills/prompt-optimizer/references/conversions.md).
 
-## Install
+## Install in Claude Code (plugin marketplace)
 
 From inside Claude Code:
 
@@ -42,22 +44,43 @@ Or from a local clone:
 /plugin install prompt-optimizer@prompt-optimizer
 ```
 
-## Use
+Invoke with `/prompt-optimizer:prompt-optimizer`, or just ask naturally - the
+skill triggers on requests like "optimize my system prompt", "rewrite my
+claude.ai preferences", "improve my project instructions", "convert this
+prompt for Claude Code", or "why is my prompt being ignored".
 
-Invoke the skill directly:
+## Use in claude.ai and Claude Desktop (skill zip)
 
-```text
-/prompt-optimizer:optimize refine this prompt: "act as a code reviewer"
+The same skill works as an uploaded skill in claude.ai and Claude Desktop -
+useful because prompt work is often done in the chat apps, not the terminal.
+
+Build the zip:
+
+```shell
+./tools/zip-skill.sh      # macOS / Linux
+./tools/zip-skill.ps1     # Windows (PowerShell 5+ or 7+)
 ```
 
-Or just ask naturally - the skill triggers on requests like "optimize my
-system prompt", "rewrite my claude.ai preferences", "improve my project
-instructions", "convert this prompt for Claude Code", or "why is my prompt
-being ignored".
+This produces `dist/prompt-optimizer-skill.zip` containing the
+`prompt-optimizer/` skill folder (SKILL.md at the folder root, with its
+`references/`). Upload it in claude.ai under Settings > Capabilities >
+Skills, or grab the prebuilt zip from the latest
+[GitHub Release](https://github.com/WimCos/prompt-optimizer/releases).
+
+Notes for the chat surfaces:
+
+- The skill name is unique (`prompt-optimizer`) because claude.ai skills are
+  flat - no plugin namespacing. If you also use other skill collections,
+  names must not collide.
+- In chat apps without file access, the skill delivers refined prompts
+  inline instead of writing files - same process, different last step.
+
+## How it behaves
 
 The skill asks one clarifying question at a time (starting with the target
-surface if unstated), produces the refined prompt as a file, and explains
-what changed and why.
+surface if unstated), applies that surface's hard rules, produces the refined
+prompt, validates it against the surface checklist, and explains what changed
+and why.
 
 ## Validity and epistemics
 
@@ -71,7 +94,22 @@ The surface rules mix two kinds of knowledge, labeled in the reference files:
   you should too before relying on the observed rules.
 
 Issues and PRs correcting stale rules are welcome - that is the main
-maintenance burden of this plugin, by design.
+maintenance burden of this project, by design.
+
+## Repository layout
+
+```text
+.claude-plugin/marketplace.json    - Claude Code marketplace manifest
+plugins/prompt-optimizer/          - the plugin package
+  .claude-plugin/plugin.json       - plugin manifest
+  skills/prompt-optimizer/         - the skill (SKILL.md + references/)
+tools/zip-skill.sh                 - builds the claude.ai skill zip into dist/ (macOS/Linux)
+tools/zip-skill.ps1                - same build for Windows (PowerShell)
+```
+
+The zip is a build artifact: it is not tracked in git (see `.gitignore`) and
+is published as a GitHub Release asset instead, so the downloadable zip is
+always tied to a tagged version and cannot silently drift from the source.
 
 ## Skill format
 
