@@ -84,10 +84,16 @@ Hard rules:
   preferences (tone, formatting, timestamps, generic tool routing, generic
   verification rules). Duplication creates drift. If content would be
   identical across two projects, it does not belong in either project file.
-- Where the project intentionally overrides a global preference (e.g. teach
-  at beginner level although the profile claims medium proficiency), state
-  the override explicitly so smaller models do not have to resolve the
-  conflict themselves.
+- Deduplication caution: only TRUE duplicates are removed. A
+  project-specific application, emphasis, or stricter variant of a global
+  rule is not a duplicate - it stays, framed as an explicit override (see
+  next rule). Domain-specific teaching content that merely resembles a
+  general principle stays. When unsure, keep it and say so.
+- Where the project intentionally overrides or tightens a global preference
+  (e.g. teach at beginner level although the profile claims medium
+  proficiency, or verify more aggressively than the general rule), state the
+  override explicitly so smaller models do not have to resolve the conflict
+  themselves.
 - Project instructions load into every conversation in the project and cost
   tokens each time - keep them lean; task-specific instructions belong in
   individual chat messages.

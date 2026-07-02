@@ -66,6 +66,13 @@ Before presenting the result, verify:
   preferences surface specifically: every universal rule carries "always" or
   "for all chats"; zero identity statements; zero procedure scripts; zero
   tool state machines.
+- Nothing project-specific was lost. Deduplication removes only TRUE
+  duplicates of the user's global preferences - a project-specific
+  application, emphasis, or stricter variant of a general rule is NOT a
+  duplicate. When unsure whether content is a duplicate, keep it.
+- Every removed section is named in the delivery summary, with the reason it
+  was safe to remove. Silent loss is a defect even when the removal is
+  correct.
 - Every instruction changes behavior - remove decorative text.
 - No instruction contradicts another or silently conflicts with the user's
   global preferences.
@@ -75,9 +82,19 @@ Before presenting the result, verify:
 
 ### 5. Deliver
 
-When file access is available, write the refined prompt to a file (suggested
-naming: `prompt-{YYYYMMDD-HHMM}-{slug}.md` or `.xml`) and summarize what
-changed and why. In chat-only contexts, deliver inline.
+When file access is available, write the refined prompt to a file and
+summarize what changed, what was removed and why, and any claims you did not
+verify.
+
+Naming and location: follow the user's established convention for the
+artifact type when one exists - inspect the destination directory first
+(e.g. a `project-instructions/` directory of `project-instructions-<name>.xml`
+files with dated siblings means the refined version is named
+`project-instructions-<name>-<YYYY-MM-DD>.xml`, not something new). Only when
+no convention is discoverable, fall back to
+`prompt-{YYYYMMDD-HHMM}-{slug}.md` or `.xml`.
+
+In chat-only contexts, deliver inline - same process, different last step.
 
 ## Register rules
 
@@ -117,6 +134,10 @@ shape is. Keep the demand, fix the shape.
 - Do not invent capabilities the target model or platform does not have. If
   the original prompt implies an unverifiable capability, flag it as a
   question.
+- Do not state unverified rationales as fact. When a justification inside a
+  refined prompt rests on a claim you have not checked (e.g. "schemas break
+  across minor versions"), either verify it or mark it as unverified in the
+  delivery summary.
 - Do not borrow conventions from other AI platforms and present them as
   Claude best practices. Stick to Anthropic's documented patterns: XML
   structure, role prompting, few-shot examples, chain-of-thought, prefilling.
@@ -141,6 +162,11 @@ shape is. Keep the demand, fix the shape.
 - Mandating visible scratchpads or reasoning rituals, on any surface.
 - Duplicating cross-cutting content into a project file when it belongs once
   in the user's global preferences.
+- Classifying project-specific content as duplication because it RESEMBLES
+  generic content, then silently dropping it. Teaching emphasis, domain
+  rules, and stricter variants stay; removals are always named.
+- Inventing a filename or location when the destination directory already
+  shows a naming convention.
 - Over-structuring with deeply nested XML when flat sections are equally
   clear.
 
