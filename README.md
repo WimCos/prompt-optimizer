@@ -117,8 +117,10 @@ always tied to a tagged version and cannot silently drift from the source.
 
 The skill follows the [agentskills.io](https://agentskills.io) standard
 (SKILL.md with frontmatter, progressive disclosure via references/), so it is
-usable by other agents that support the standard - it is not coupled to
-Claude Code.
+usable by other agents that support the standard.
+
+I have not tested the skill in other agents like OpenCode or Pi, nor have I
+tested the prompts it creates against other models than the Claude models.
 
 ## License
 
